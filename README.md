@@ -8,10 +8,6 @@ Volvo FH Electric 전기 트럭을 기준으로, **사원번호와 배차일만 
 고정 노선(465.6km, 17개 구간)을 기준으로 차량·화물·운행환경·배터리 상태와
 구간별 경사도를 반영해 운행 가능 여부를 판정한다.
 
-> `E_car` 프로젝트를 리팩터링한 정리 버전이다. 모놀리식 `app.py`를 `src/ev_logistics/`
-> 패키지로 분리하고, 의존성 선언·문서 수치·중복 코드를 정리했다.
-> 변경 내역은 [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) 참고.
-
 ---
 
 ## 핵심 기능
