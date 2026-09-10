@@ -50,11 +50,12 @@ Streamlit 결과 화면 + 일일 배차기록 CSV/Excel
   | MAE | 0.705 kWh/100km | — |
   | RMSE | 0.887 kWh/100km | 예상 오차 ±0.89 kWh/100km |
 
-- **실험 설계**: Baseline / Scaling / Feature Engineering / FE + Scaling 네 조합을 동일 분할로
-  비교 (`notebooks/01_energy_model_analysis.ipynb`)
+- **실험 설계**: Baseline / Scaling / Feature Engineering / FE + Scaling 네 조합을
+  동일 분할로 비교해 FE + Scaling / LinearRegression 조합을 선정
 - **물리 기반 파생변수 7개**: 속도 제곱(공기저항), 외기온도 편차, 배터리 온도 편차,
   타이어 공기압 편차, 적재량 × 경사도, HVAC × 외기온도 편차, 속도 × 운전성향
 - 학습된 모델은 `models/energy_model.joblib`로 저장해 서비스 실행 시 재학습 없이 재사용
+  (`scripts/train_model.py`로 생성, 파일이 없으면 앱이 최초 실행 시 자동 학습)
 
 ## 노선 경사도 데이터 방법론
 
@@ -91,7 +92,7 @@ Streamlit 결과 화면 + 일일 배차기록 CSV/Excel
 ## 기술 스택
 
 Python 3.12 · Streamlit · scikit-learn · pandas · NumPy · joblib · XlsxWriter ·
-matplotlib · python-pptx · [uv](https://github.com/astral-sh/uv)
+[uv](https://github.com/astral-sh/uv)
 
 ## 프로젝트 구조
 
@@ -110,41 +111,36 @@ EV_LOGISTICS_SERVICE/
 ├─ app/app.py                 # Streamlit 화면 (로직 없음)
 ├─ scripts/
 │  ├─ train_model.py          # 모델 학습 → models/energy_model.joblib
-│  ├─ run_simulation.py       # CLI로 한 건 시뮬레이션
-│  ├─ export_presentation_assets.py
-│  └─ create_presentation.py
-├─ notebooks/
-│  ├─ 01_energy_model_analysis.ipynb    # EDA + 전처리 4종 비교
-│  └─ 02_service_simulation_demo.ipynb  # end-to-end 데모
-├─ tests/test_service.py
+│  └─ run_simulation.py       # CLI로 한 건 시뮬레이션
+├─ tests/test_service.py      # 스모크 테스트 7개
 ├─ data/                      # ML 학습 CSV, 차량·노선·경사 CSV, 설정 JSON 2개
-├─ docs/                      # 발표자료(.md), 데이터 가이드, 구현 현황, 분석 차트
 ├─ models/                    # energy_model.joblib (git 제외, 스크립트로 생성)
 └─ outputs/                   # 세션별 배차기록·시뮬레이션 결과 (git 제외)
 ```
 
 ## 실행 방법
 
+### uv 사용
+
 ```bash
-# 1. 의존성 설치 (서비스 + 개발 도구)
-uv sync --all-groups
+uv sync                                   # 의존성 설치
+uv run python scripts/train_model.py      # 모델 학습 (선택 - 앱이 자동 학습도 함)
+uv run streamlit run app/app.py           # 서비스 실행
 
-# 2. 에너지 모델 학습 (models/energy_model.joblib 생성)
-uv run python scripts/train_model.py
+uv run python scripts/run_simulation.py 12345678 2026-08-28   # CLI 한 건
+uv run --group dev python -m pytest -q                         # 테스트
+```
 
-# 3. 서비스 실행
-uv run streamlit run app/app.py
+### pip 사용
 
-# (선택) CLI 한 건 시뮬레이션
-uv run python scripts/run_simulation.py 12345678 2026-08-28
-
-# (선택) 테스트
-uv run python -m pytest -q
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app/app.py
 ```
 
 `.streamlit/config.toml`에 `headless = false`, 포트 `8501`을 설정해 두어
 실행하면 브라우저가 `http://localhost:8501`을 자동으로 연다.
-`app/app.py`는 `models/energy_model.joblib`가 없으면 최초 실행 시 직접 학습해 저장한다.
 
 ## 참고 논문
 
@@ -154,10 +150,10 @@ uv run python -m pytest -q
 
 ## 한계 및 향후 개선
 
-[docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md)에 정리했다. 요약하면:
-
-- 모델 스케일 보정(`model_adapter_config.json`)은 **데모 시연용**이다. 실제 정확도를
-  주장하려면 대형 전기트럭 실측 데이터로 재학습해야 한다.
-- 충전 계획은 "필요할 때만 채우는" 그리디 방식으로, 여러 충전 조합의 총 도착시간을
-  비교하는 최적화는 향후 과제다.
-- 구간 평균경사는 DEM 유도값이며, 트리 모델(XGBoost/LightGBM)·SHAP 분석은 남겨 두었다.
+- 모델 스케일 보정(`data/model_adapter_config.json`)은 **데모 시연용**이다. 승용 EV 학습
+  데이터를 대형 전기트럭 스케일로 맞추는 계층으로, 실제 정확도를 주장하려면 대형
+  전기트럭 실측 데이터로 재학습해야 한다.
+- 충전 계획은 "안전 SOC를 못 지키는 직전 휴게소에서 100% 충전"하는 그리디 방식으로,
+  여러 충전 조합의 총 도착시간을 비교하는 최적화는 향후 과제다.
+- 서비스 입력에서 `battery_temp_C = 30`(최적값) 고정. 실차 데이터가 있으면 확장 가능.
+- 구간 평균경사는 DEM 유도값이며, 트리 모델(XGBoost/LightGBM)·SHAP 해석은 남겨 두었다.
