@@ -1,0 +1,19 @@
+sequence,point_name,trip_distance_from_start_km,segment_distance_km,latitude,longitude,elevation_m,segment_average_grade_pct,grade_method,grade_data_source,grade_data_quality
+0,부산항 신선대 컨테이너터미널,0.0,0.0,35.1251046,129.1002056,8.0,0.0000,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+1,양산휴게소,31.0,31.0,35.3230950,129.0564736,55.0,0.1516,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+2,언양휴게소,64.0,33.0,35.5979926,129.1416214,110.0,0.1667,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+3,건천휴게소,96.0,32.0,35.8315171,129.1090547,85.0,-0.0781,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+4,경산휴게소,131.0,35.0,35.7673890,128.8391490,145.0,0.1714,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+5,칠곡휴게소,178.0,47.0,36.0125577,128.4306345,68.0,-0.1638,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+6,김천휴게소,214.0,36.0,36.1307959,128.1637730,77.0,0.0250,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+7,추풍령휴게소,233.0,19.0,36.1966101,128.0072777,191.0,0.6000,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+8,황간휴게소,250.0,17.0,36.2493478,127.8544468,155.0,-0.2118,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+9,옥천휴게소,277.0,27.0,36.2973040,127.5988135,125.0,-0.1111,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+10,신탄진휴게소,301.0,24.0,36.4256865,127.4179114,58.0,-0.2792,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+11,죽암휴게소,310.0,9.0,36.4970182,127.4305107,51.0,-0.0778,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+12,청주휴게소,337.0,27.0,36.7161538,127.3485710,55.0,0.0148,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+13,천안삼거리휴게소,356.0,19.0,36.7877917,127.1735869,56.0,0.0053,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+14,입장거봉포도휴게소,374.0,18.0,36.9384432,127.1894730,21.0,-0.1944,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+15,안성휴게소,392.0,18.0,37.0766271,127.1325804,47.0,0.1444,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+16,안산휴게소,443.6,51.6,37.3511666,126.8187835,26.0,-0.0407,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived
+17,한진인천컨테이너터미널(HJIT),465.6,22.0,37.3494799,126.6612995,0.0,-0.1182,endpoint_elevation_difference,Copernicus DEM via Open-Meteo,derived

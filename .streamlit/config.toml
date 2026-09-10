@@ -1,0 +1,7 @@
+[server]
+# 배포 환경(Streamlit Community Cloud 등)에서는 headless 필수.
+# 포트/주소는 플랫폼이 지정하므로 여기서 하드코딩하지 않는다.
+headless = true
+
+[browser]
+gatherUsageStats = false

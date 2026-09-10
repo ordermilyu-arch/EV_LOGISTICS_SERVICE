@@ -1,0 +1,17 @@
+﻿route_id,source_route_id,sequence,rest_area_name_ko,highway,direction,core_distance_from_start_km,trip_distance_from_start_km,distance_from_prev_rest_area_km,distance_from_trip_start_or_prev_km,ev_charger_available,verified_charger_count,max_verified_power_kw,service_charger_status,service_usable_for_charging,operator,charger_data_quality,service_note
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,1,양산휴게소,경부고속도로,서울방향,11.0,31.0,11.0,31.0,1,4,100,AVAILABLE,1,한국전력,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,2,언양휴게소,경부고속도로,서울방향,44.0,64.0,33.0,33.0,1,4,360,AVAILABLE,1,이지차저,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,3,건천휴게소,경부고속도로,서울방향,76.0,96.0,32.0,32.0,1,,,OUT_OF_SERVICE,0,,needs_verification,출력 미확인 충전기는 프로젝트 규칙에 따라 고장/이용불가 처리.
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,4,경산휴게소,경부고속도로,서울방향,111.0,131.0,35.0,35.0,1,5,350,AVAILABLE,1,채비,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,5,칠곡휴게소,경부고속도로,서울방향,158.0,178.0,47.0,47.0,1,5,200,AVAILABLE,1,SK일렉링크,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,6,김천휴게소,경부고속도로,서울방향,194.0,214.0,36.0,36.0,1,5,200,AVAILABLE,1,이지차저,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,7,추풍령휴게소,경부고속도로,서울방향,213.0,233.0,19.0,19.0,1,4,360,AVAILABLE,1,이지차저,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,8,황간휴게소,경부고속도로,서울방향,230.0,250.0,17.0,17.0,1,2,100,AVAILABLE,1,환경부,medium,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,9,옥천휴게소,경부고속도로,서울방향,257.0,277.0,27.0,27.0,1,7,350,AVAILABLE,1,SK시그넷,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,10,신탄진휴게소,경부고속도로,서울방향,281.0,301.0,24.0,24.0,1,4,350,AVAILABLE,1,환경부,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,11,죽암휴게소,경부고속도로,서울방향,290.0,310.0,9.0,9.0,1,3,100,AVAILABLE,1,환경부,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,12,청주휴게소,경부고속도로,서울방향,317.0,337.0,27.0,27.0,1,5,200,AVAILABLE,1,SK일렉링크,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,13,천안삼거리휴게소,경부고속도로,서울방향,336.0,356.0,19.0,19.0,1,3,50,AVAILABLE,1,환경부,medium,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,14,입장거봉포도휴게소,경부고속도로,서울방향,354.0,374.0,18.0,18.0,1,2,50,AVAILABLE,1,환경부,medium,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,15,안성휴게소,경부고속도로,서울방향,372.0,392.0,18.0,18.0,1,10,260,AVAILABLE,1,현대자동차 E-pit; 환경부,high,
+BUSAN_PORT_HJIT_V1,BUSAN_ICN_T1_V1,16,안산휴게소,영동고속도로,인천방향,423.6,443.6,51.6,51.6,1,19,,OUT_OF_SERVICE,0,,needs_refresh,출력 미확인 충전기는 프로젝트 규칙에 따라 고장/이용불가 처리.

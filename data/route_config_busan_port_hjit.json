@@ -1,0 +1,54 @@
+{
+  "route_id": "BUSAN_PORT_HJIT_V1",
+  "route_name": "부산항 신선대 컨테이너터미널 -> 한진인천컨테이너터미널(HJIT)",
+  "start": {
+    "name": "부산항 신선대 컨테이너터미널",
+    "address": "부산광역시 남구 신선로 294",
+    "core_route_access_point": "경부고속도로 부산기점 / 구서IC",
+    "access_distance_km": 20.0,
+    "distance_quality": "PROJECT_FIXED_ESTIMATE",
+    "note": "번영로 문현(부두진입로)~구서IC 공식 15.7km와 항만 접근구간을 합쳐 프로젝트 고정값 20.0km로 사용."
+  },
+  "core_route": {
+    "source_route_id": "BUSAN_ICN_T1_V1",
+    "last_rest_area": "안산휴게소",
+    "distance_from_core_start_to_last_rest_area_km": 423.6
+  },
+  "destination": {
+    "name": "한진인천컨테이너터미널(HJIT)",
+    "address": "인천광역시 연수구 인천신항대로 777 (송도동)",
+    "egress_distance_from_ansan_rest_area_km": 22.0,
+    "distance_quality": "DERIVED_PROJECT_FIXED",
+    "derivation": {
+      "ansan_rest_area_to_wolgot_jc_km": 8.0,
+      "wolgot_jc_to_gojan_tg_km": 4.0,
+      "gojan_tg_to_new_port_access_approx_km": 1.5,
+      "incheon_new_port_access_road_km": 8.1,
+      "raw_sum_km": 21.6,
+      "project_rounded_km": 22.0
+    }
+  },
+  "total_route_distance_km": 465.6,
+  "fixed_departure_time": "10:00",
+  "route_grade_data": {
+    "file": "datas/busan_port_hjit_route_grade.csv",
+    "method": "구간 시작·끝 고도 차이를 구간 거리로 나눈 평균경사",
+    "elevation_source": "Copernicus DEM via Open-Meteo Elevation API",
+    "elevation_resolution_m": 90,
+    "limitation": "도로 종단선형의 순간 최대경사가 아닌 구간 평균경사"
+  },
+  "simulation_constants": {
+    "default_departure_soc_pct": 90,
+    "minimum_reserve_soc_pct": 10,
+    "simulation_average_speed_kmh": 100,
+    "maximum_charge_target_soc_pct": 100,
+    "charging_efficiency": 0.92,
+    "charging_stop_overhead_minutes": 7,
+    "unknown_charger_power_policy": "OUT_OF_SERVICE"
+  },
+  "source_urls": {
+    "busan_bunyeongro": "https://www.bisco.or.kr/custom/custom10/custom10_02/01/custom_01_view.asp?branch=00013&page=3&vocno=14000298",
+    "incheon_new_port_access_road": "https://www.mof.go.kr/doc/ko/selectDoc.do?bbsSeq=10&docSeq=7751&menuSeq=971",
+    "hjit": "https://www.hjit.co.kr/kor/Contents.do?mCode=MN0033"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "purpose": "현재 ML 모델의 승용 EV 스케일 입력/출력을 Volvo FH Electric 서비스 표시값에 연결하기 위한 DEMO calibration layer",
+  "warning": "서비스 운영 모델은 차량 운행 조건과 배차 데이터를 기반으로 에너지 소비량을 산출합니다.",
+  "training_domain": {
+    "payload_kg": {
+      "min": 0.0,
+      "max": 500.0
+    },
+    "tire_pressure_bar": {
+      "min": 2.0,
+      "max": 2.8
+    },
+    "energy_consumption_kwhper100km_mean": 24.138
+  },
+  "service_domain": {
+    "payload_kg": {
+      "min": 0.0,
+      "max": 23500.0
+    },
+    "tire_pressure_bar": {
+      "min": 8.5,
+      "max": 9.4
+    },
+    "volvo_reference_energy_kwhper100km": 110.0
+  },
+  "input_mapping": {
+    "payload_kg": "model_payload = real_payload / 23500 * 500",
+    "tire_pressure_bar": "model_tire = 2.0 + ((real_tire - 8.5) / (9.4 - 8.5)) * (2.8 - 2.0)",
+    "method": "linear interpolation (numpy.interp) between service_domain and training_domain ranges"
+  },
+  "output_mapping": {
+    "formula": "service_prediction = raw_model_prediction * output_calibration_factor",
+    "output_calibration_factor": 4.55713,
+    "note": "raw 모델 출력(승용 EV 스케일 kWh/100km)에 보정계수를 곱해 대형 전기트럭 표시값으로 변환"
+  },
+  "reference": {
+    "volvo_road_test": "Volvo FH Electric, 40t, average speed 80km/h, measured energy consumption 1.1kWh/km (=110kWh/100km)",
+    "source_url": "https://www.volvotrucks.com/en-en/news-stories/stories/2022/jan/volvo-fh-electric-excel-in-first-road-test.html"
+  }
+}
