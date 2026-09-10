@@ -139,8 +139,20 @@ pip install -r requirements.txt
 streamlit run app/app.py
 ```
 
-`.streamlit/config.toml`에 `headless = false`, 포트 `8501`을 설정해 두어
-실행하면 브라우저가 `http://localhost:8501`을 자동으로 연다.
+### VS Code에서 실행
+
+`Terminal → New Terminal` 을 열고 위 `pip 사용` 또는 `uv 사용` 명령을 그대로 입력한다.
+`F5`(디버그 실행)로는 Streamlit 앱이 뜨지 않으므로 반드시 터미널에서 `streamlit run` 을 쓴다.
+
+### 실행 시 주의
+
+- **반드시 `streamlit run app/app.py`** 로 실행한다. `python app/app.py` 로 직접 실행하면
+  웹 서버가 뜨지 않고 `missing ScriptRunContext! ... running in bare mode` 경고만 출력되고 끝난다.
+- `.streamlit/config.toml` 은 배포용으로 `headless = true` 라서 브라우저가 자동으로 열리지
+  않는다. 터미널에 표시되는 `Local URL: http://localhost:8501` 을 직접 브라우저에 입력한다.
+  종료는 `Ctrl+C`.
+- `models/energy_model.joblib` 이 없으면 앱이 최초 실행 시 자동으로 학습해 생성한다(수 초).
+  미리 만들려면 `python scripts/train_model.py`.
 
 ## 참고 논문
 
